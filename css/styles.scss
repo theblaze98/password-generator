@@ -1,1 +1,175 @@
 @use 'reset';
+
+// Definimos Variables
+:root {
+	--color-primary: #dfeaec;
+	--color-secundary: #f2f2f2;
+	--color-third: #2d2d2d;
+	--color-blue: #0075ff;
+	--color-red: #e2321e;
+	--color-sombra: #d7d7d7;
+}
+
+// Se encarg del darkmode dependiendo al tema del usuario
+@media (prefers-color-scheme: dark) {
+	// Definimos variables para el darkmode
+	:root {
+		--color-primary: #181818;
+		--color-secundary: #252525;
+		--color-third: #f2f2f2;
+		--color-sombra: #565656;
+	}
+}
+
+$color-third: var(--color-third);
+
+body {
+	background: var(--color-primary);
+	color: var(--color-third);
+}
+
+.app {
+	width: 90%;
+	max-width: 720px;
+	margin: 30px auto;
+	padding: 20px;
+	background: var(--color-secundary);
+	border-radius: 5px;
+	box-shadow: 0 0 10px 2px var(--color-sombra);
+	&__h2 {
+		font-size: 22px;
+		font-weight: 800;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	&__input-group {
+		position: relative;
+		width: 100%;
+		max-width: 400px;
+		margin: auto;
+		display: flex;
+		gap: 20px;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 20px;
+		input[type='checkbox'] {
+			display: none;
+			&:checked + .app__checkbox {
+				.slider {
+					left: calc(100% - 27px);
+					background: var(--color-blue);
+				}
+			}
+		}
+	}
+	&__input-num-caracteres {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		.indicador {
+			display: inline-block;
+			width: 28px;
+			height: 22px;
+			border-radius: 2px;
+			background: var(--color-blue);
+			color: #fff;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 22px;
+			justify-content: center;
+			position: relative;
+			display: flex;
+			align-items: center;
+			&::before {
+				content: '';
+				width: 7px;
+				height: 7px;
+				position: absolute;
+				background: var(--color-blue);
+				left: -4px;
+				transform: rotate(45deg);
+			}
+		}
+	}
+	&__checkbox {
+		width: 58px;
+		height: 27px;
+		border: 1px solid rgba(#ccc, 0.7);
+		cursor: pointer;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		.slider {
+			width: 27px;
+			height: 27px;
+			left: 0;
+			background: var(--color-red);
+			border-radius: 5px;
+			position: absolute;
+			text-align: center;
+			font-size: 20px;
+			line-height: 27px;
+			color: #fff;
+			transition: all ease 0.5s;
+		}
+	}
+	&__btn {
+		width: 30%;
+		height: 30px;
+		border-radius: 10px;
+		background: var(--color-blue);
+		cursor: pointer;
+		opacity: 1;
+		transition: all ease 0.5s;
+		color: #fff;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+	&__input-password {
+		width: 60%;
+		outline: none;
+		border: 1px solid rgba(#ccc, 0.7);
+		background: transparent;
+		padding: 5px 10px;
+		text-align: center;
+		&::selection {
+			background: transparent;
+		}
+	}
+	&__alert-copied {
+		opacity: 0;
+		position: absolute;
+		left: 60%;
+		bottom: -20px;
+		transition: all ease 0.3s;
+		&.active {
+			opacity: 1;
+		}
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.app {
+		&__input-group {
+			h4 {
+				font-size: 15px;
+			}
+			&.password {
+				justify-content: center;
+				flex-direction: column;
+			}
+		}
+		&__btn {
+			width: 100%;
+		}
+		&__input-password {
+			width: 100%;
+		}
+		&__alert-copied {
+			left: auto;
+		}
+	}
+}

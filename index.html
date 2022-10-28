@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Ganerator</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="app">
+        <h2 class="app__h2">Password Generator</h2>
+
+
+        <div class="app__input-group">
+            <h4>Numero de caracteres</h4>
+            <div class="app__input-num-caracteres">
+                <input type="range" class="range-input" id="num_caracteres" value="6" min="6" max="20">
+                <span class="indicador" id="indicador"></span>
+            </div>
+        </div>
+        <div class="app__input-group">
+            <h4>Mayusculas</h4>
+            <input type="checkbox" id="chk_mayusculas">
+            <label for="chk_mayusculas" class="app__checkbox">
+                <div class="slider"><span>&times;</span></div>
+            </label>
+        </div>
+        <div class="app__input-group">
+            <h4>Numeros</h4>
+            <input type="checkbox" id="chk_numeros">
+            <label for="chk_numeros" class="app__checkbox">
+                <div class="slider"><span>&times;</span></div>
+            </label>
+        </div>
+        <div class="app__input-group">
+            <h4>Simbolos</h4>
+            <input type="checkbox" id="chk_simbolos">
+            <label for="chk_simbolos" class="app__checkbox">
+                <div class="slider"><span>&times;</span></div>
+            </label>
+        </div>
+
+        <div class="app__input-group password">
+            <button class="app__btn" id="btn_generar">Generar</button>
+            <input class="app__input-password" type="text" id="input_password" readonly>
+            <span class="app__alert-copied">Copiado 📝</span>
+        </div>
+    </div>
+    <script src="js/generarPassword.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
